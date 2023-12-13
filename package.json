@@ -1,0 +1,12 @@
+{
+  "name": "techjobs-console-java-graded-17",
+  "version": "1.0.0",
+  "description": "For [this assignment](https://education.launchcode.org/java-web-dev-curriculum/assignments/techjobs-console), students are asked to complete a console app that allows users to browse, search, and print listings of open jobs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

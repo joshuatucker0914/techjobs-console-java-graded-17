@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by LaunchCode
@@ -75,7 +76,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue != null && aValue.equalsIgnoreCase(value)) {
                 jobs.add(row);
             }
         }
@@ -95,7 +96,25 @@ public class JobData {
         loadData();
 
         // TODO - implement this method
-        return null;
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for (HashMap<String, String> row : allJobs) {
+            // Iterate over each field in the row
+            for (Map.Entry<String, String> entry : row.entrySet()) {
+                String fieldValue = entry.getValue();
+
+                // Check if the field value contains the search term (case-insensitive)
+                if (fieldValue != null && fieldValue.toLowerCase().contains(value.toLowerCase())) {
+                    // Add the job to the list if not already present
+                    if (!jobs.contains(row)) {
+                        jobs.add(row);
+                        break;  // Break to avoid adding the same job multiple times
+                    }
+                }
+            }
+        }
+
+        return jobs;
     }
 
     /**
